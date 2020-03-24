@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsforce/1.9.1/jsforce.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        $("button").click(function(){
+            $.ajaxSetup({
+                headers:{
+                    "Content-Type" : "application/x-www-form-urlencoded",
+                    "Access-Control-Allow-Origin" : "*"
+                }
+            });
+            $.ajax({
+                url : "https://login.salesforce.com/services/oauth2/token",
+                type : "POST",
+                contentType : "application/x-www-form-urlencoded" ,
+                crossDomain : true,
+                data : {
+                    "grant_type" : "password",
+                    "client_id" : "3MVG9G9pzCUSkzZtuZ_JUaWND9lss_g0unKdZ3j70K.pWfPJjaMo2eaqBfjDT5XnG1vnLtePbFgktQarKWlwK",
+                    "client_secret" : "D2CE4CF01AB1696565B7DB539D28D842CD9702A14EC81EA3C8A8DC2776E7DD89",
+                    "username" : "flysboat@test.com",
+                    "password" : "salesforce5VgSwxft3Y3AiTpPY5bVkgI65"
+                },
+                success: function(result) {
+                    console.log(result);
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                    console.log('Error: '+jqXHR.status);
+                    console.log('textStatus: '+textStatus)
+                } 
+            });
+        });
+    });
+    
+</script>
+</head>
+<body>
+    <div id="div1"><h2>jQuery AJAX test</h2></div>
+    <button>Get External Content</button><br/>
+</body>
+</html>
